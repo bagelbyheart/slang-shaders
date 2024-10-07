@@ -4,7 +4,7 @@ shader0 = shaders/img+bevel_border.slang
 scale_type0 = viewport
 
 textures = BORDER
-BORDER = textures/pvm.png
+BORDER = textures/alleyway.png
 
 parameters = border_on_top
 border_on_top = 0.0
