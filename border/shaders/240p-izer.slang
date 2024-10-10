@@ -9,4 +9,4 @@
 #pragma parameter border_zoom_x "Border Zoom X" 1.0 0.0 4.0 0.01
 #pragma parameter border_zoom_y "Border Zoom Y" 1.0 0.0 4.0 0.01
 
-#include "imgborder.inc"
+#include "240p-izer.inc"
