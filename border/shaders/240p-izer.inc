@@ -8,11 +8,8 @@ layout(push_constant) uniform Push
 	vec4 SourceSize;
 	uint FrameCount;
 	float box_scale;
-	float location_x;
-	float location_y;
 	float in_res_x;
 	float in_res_y;
-	float border_on_top;
 	float border_zoom_x;
 	float border_zoom_y;
 	float OS_MASK_TOP;
@@ -42,7 +39,7 @@ void main()
    gl_Position = global.MVP * Position;
    vec2 corrected_size = vec2(params.in_res_x, params.in_res_y);
    vec2 scale = (params.OutputSize.xy / corrected_size) / params.box_scale;
-   vec2 middle = vec2(params.location_x, params.location_y);
+   vec2 middle = vec2(0.5);
    vec2 diff = TexCoord.xy - middle;
    screen_coord = middle + diff * scale;
    middle = vec2(0.4999, 0.4999);
@@ -61,7 +58,7 @@ void main()
 {
 vec4 screen = texture(Source, screen_coord); //the main video screen
 vec4 background = vec4(texture(BORDER, vTexCoord)); //put your background function's output here
-if ( screen_coord.x < 0.9999 - params.OS_MASK_RIGHT && screen_coord.x > 0.0001 + params.OS_MASK_LEFT && screen_coord.y < 0.9999 - params.OS_MASK_BOTTOM && screen_coord.y > 0.0001 + params.OS_MASK_TOP && params.border_on_top > 0.5 )
+if ( screen_coord.x < 0.9999 - params.OS_MASK_RIGHT && screen_coord.x > 0.0001 + params.OS_MASK_LEFT && screen_coord.y < 0.9999 - params.OS_MASK_BOTTOM && screen_coord.y > 0.0001 + params.OS_MASK_TOP )
 background.a *= 0.0;
    FragColor = vec4(mix(screen, background, background.a));
 }
