@@ -10,8 +10,8 @@ layout(push_constant) uniform Push
 	float box_scale;
 	float location_x;
 	float location_y;
-	float in_res_x;
-	float in_res_y;
+	float in_asp_x;
+	float in_asp_y;
 	float border_on_top;
 	float border_zoom_x;
 	float border_zoom_y;
@@ -40,7 +40,9 @@ layout(location = 1) out vec2 screen_coord;
 void main()
 {
    gl_Position = global.MVP * Position;
-   vec2 corrected_size = vec2(params.in_res_x, params.in_res_y);
+   vec2 corrected_size = vec2(
+    (params.SourceSize.x * (params.in_asp_x/params.in_asp_y)),
+    params.SourceSize.y);
    vec2 scale = (params.OutputSize.xy / corrected_size) / params.box_scale;
    vec2 middle = vec2(params.location_x, params.location_y);
    vec2 diff = TexCoord.xy - middle;
