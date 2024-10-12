@@ -37,7 +37,7 @@ layout(location = 1) out vec2 screen_coord;
 void main()
 {
    gl_Position = global.MVP * Position;
-   vec2 corrected_size = vec2(params.in_res_x, params.in_res_y);
+   vec2 corrected_size = vec2(((params.in_res_x / params.in_res_y) * params.OriginalSize.y), params.OriginalSize.y);
    vec2 scale = (params.OutputSize.xy / corrected_size) / params.box_scale;
    vec2 middle = vec2(0.5);
    vec2 diff = TexCoord.xy - middle;
