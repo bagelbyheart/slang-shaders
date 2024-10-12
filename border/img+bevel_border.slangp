@@ -10,8 +10,8 @@ scale_y0 = "240"
 parameters = "box_scale;location;in_asp_x;in_asp_y"
 box_scale = "1.000000"
 location = "0.500000"
-in_asp_x = "1.000000"
-in_asp_y = "1.000000"
+in_asp_x = "4.000000"
+in_asp_y = "3.000000"
 
 textures = BORDER
 BORDER = textures/alleyway.png
