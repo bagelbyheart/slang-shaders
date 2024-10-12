@@ -1,10 +1,11 @@
 shaders = 1
 
 shader0 = shaders/img+bevel_border.slang
-# scale_type_x0 = "absolute"
-# scale_x0 = "320"
-# scale_type_y0 = "absolute"
-# scale_y0 = "240"
+filter_linear0 = true
+scale_type_x0 = "absolute"
+scale_x0 = "320"
+scale_type_y0 = "absolute"
+scale_y0 = "240"
 
 parameters = "box_scale;location;in_asp_x;in_asp_y"
 box_scale = "1.000000"
