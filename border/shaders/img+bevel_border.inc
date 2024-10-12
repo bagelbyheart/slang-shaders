@@ -39,8 +39,12 @@ layout(location = 1) out vec2 screen_coord;
 
 void main()
 {
+   float y_height;
+   y_height = params.SourceSize.y;
    gl_Position = global.MVP * Position;
-   if ( params.SourceSize.y > params.OutputSize.y) params.SourceSize.y = (params.SourceSize.y / 2.0 );
+   if ( params.SourceSize.y > params.OutputSize.y) {
+     y_height = (params.SourceSize.y / 2.0 );
+   }
    vec2 corrected_size = vec2(
     (params.SourceSize.x * (params.in_asp_x/params.in_asp_y)),
     params.SourceSize.y);
