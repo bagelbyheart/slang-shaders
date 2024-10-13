@@ -37,12 +37,11 @@ layout(location = 1) out vec2 screen_coord;
 void main()
 {
    gl_Position = global.MVP * Position;
-   if (params.in_res_x == 0.0) {
-	 float aspect = params.OriginalSize.x / params.OriginalSize.y;
-   }
-   else {
-	 float aspect = params.in_res_x / params.in_res_y ;
-   }
+   float aspect = float(1.);
+   if (params.in_res_x == 0.0)
+     aspect = params.OriginalSize.x / params.OriginalSize.y;
+   else
+     aspect = params.in_res_x / params.in_res_y ;
    float hlines = aspect * params.OriginalSize.y ;
    vec2 corrected_size = vec2(hlines, params.OriginalSize.y);
    vec2 scale = (params.OutputSize.xy / corrected_size) / params.box_scale;
