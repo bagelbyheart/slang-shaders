@@ -38,12 +38,15 @@ void main()
 {
    gl_Position = global.MVP * Position;
    float aspect = float(1.);
+   vec2 downscaled = params.OriginalSize.xy;
+   if (params.OriginalSize.x > 360) downscaled.x = (params.OriginalSize.x / 2)
+   if (params.OriginalSize.y > 270) downscaled.y = (params.OriginalSize.y / 2)
    if (params.in_res_x == 0.0)
-     aspect = params.OriginalSize.x / params.OriginalSize.y;
+     aspect = downscaled.x / downscaled.y;
    else
      aspect = params.in_res_x / params.in_res_y ;
-   float hlines = aspect * params.OriginalSize.y ;
-   vec2 corrected_size = vec2(hlines, params.OriginalSize.y);
+   float hlines = aspect * downscaled.y ;
+   vec2 corrected_size = vec2(hlines, downscaled.y);
    vec2 scale = (params.OutputSize.xy / corrected_size) / params.box_scale;
    vec2 middle = vec2(0.5);
    vec2 diff = TexCoord.xy - middle;
