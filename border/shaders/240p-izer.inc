@@ -39,8 +39,8 @@ void main()
    gl_Position = global.MVP * Position;
    float aspect = float(1.);
    vec2 downscaled = params.OriginalSize.xy;
-   if (params.OriginalSize.x > 360) downscaled.x = (params.OriginalSize.x / 2)
-   if (params.OriginalSize.y > 270) downscaled.y = (params.OriginalSize.y / 2)
+   if (params.OriginalSize.x > 360) downscaled.x = (params.OriginalSize.x / 2);
+   if (params.OriginalSize.y > 270) downscaled.y = (params.OriginalSize.y / 2);
    if (params.in_res_x == 0.0)
      aspect = downscaled.x / downscaled.y;
    else
